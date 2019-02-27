@@ -1,0 +1,129 @@
+﻿@model WebSiteExample.Models.Contact
+@{
+    ViewBag.Title = "Contact";
+}
+<div id="contact" class="contact-area">
+    <div class="contact-inner area-padding">
+        <div class="contact-overly"></div>
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-headline text-center">
+                        <h2>İletişim</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Start contact icon column -->
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="contact-icon text-center">
+                        <div class="single-icon">
+                            <i class="fa fa-mobile"></i>
+                            <p>
+                                Telefon: +90 362 485 98 58<br>
+                                <span>Pazartesi- Cuma (9-17)</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Start contact icon column -->
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="contact-icon text-center">
+                        <div class="single-icon">
+                            <i class="fa fa-envelope-o"></i>
+                            <p>
+                                Email: info@software.com<br>
+                                <span>Web: www.software.com</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Start contact icon column -->
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="contact-icon text-center">
+                        <div class="single-icon">
+                            <i class="fa fa-map-marker"></i>
+                            <p>
+                                Adres: Atakum <br>
+                                <span>Samsun - Türkiye</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br /><br /><br />
+            <div class="row">
+
+                <!-- Start Google Map -->
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <!-- Start Map -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.071090283045!2d36.218713615726074!3d41.35080850622433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x408877ca1f9e2c55%3A0xf05b034e1f8e2716!2zS0FZUkFTT0ZUIFlBWklMSU0gdmUgQsSwTMSwxZ7EsE0gVEVLTk9MT0rEsExFUsSw!5e0!3m2!1str!2str!4v1538130811335" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <!-- End Map -->
+                </div>
+                <!-- End Google Map -->
+                <!-- Start  contact -->
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form contact-form">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal col-md-8">
+
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2", @type = "mail" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @type = "phone" } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Gönder" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+                <!-- End Left contact -->
+            </div>
+        </div>
+    </div>
+</div>

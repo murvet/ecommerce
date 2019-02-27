@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Anasayfa", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Hakkımızda", "About", "Home")</li>
+                    <li>@Html.ActionLink("Ürünlerimiz", "Index", "Home")</li>
+                    <li>@Html.ActionLink("İletişim", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right top-nav">
+                    @if (Session["uyeid"] != null)
+                    {
+                        <li class="dropdown">
+
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> @Session["kullaniciadi"].ToString() <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+
+                                <li>
+                                    <a href="/Uye/Index/@Session["uyeid"]">@Session["kullaniciadi"].ToString()<i class=""></i> Profil</a>
+                                </li>
+
+                                @if (Convert.ToInt32(Session["yetkiid"]) == 1)
+                                {
+                                    <li>
+                                        <a href="/Admin/Index/" target="_blank"><i class="fa fa-fw fa-gear"></i> Admin Paneli</a>
+                                    </li>
+                                }
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="/Uye/Logout/"><i class="fa fa-fw fa-power-off"></i> Çıkış</a>
+                                </li>
+
+
+
+
+
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="/Uye/Login/">Giriş</a>
+                        </li>
+                        <li>
+                            <a href="/Uye/Create/">Kayıt OL</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
